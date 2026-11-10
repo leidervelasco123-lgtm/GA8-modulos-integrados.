@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const crypto = require('node:crypto');
 const path = require('node:path');
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const archivoUsuarios = path.join(__dirname, '..', 'usuarios.json');
 
 // Lee los usuarios guardados. Si el archivo aún no existe, empieza con una lista vacía.
@@ -120,6 +120,6 @@ const servidor = http.createServer(async (request, response) => {
 });
 
 // Inicia el servidor y escucha solicitudes en el puerto configurado.
-servidor.listen(PORT, () => {
+servidor.listen(PORT, '0.0.0.0', () => {
     console.log(`Servicio disponible en http://localhost:${PORT}`);
 });
