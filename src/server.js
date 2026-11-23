@@ -4,7 +4,10 @@ const crypto = require('node:crypto');
 const path = require('node:path');
 
 const PORT = process.env.PORT || 3000;
-const archivoUsuarios = path.join(__dirname, '..', 'usuarios.json');
+const carpetaDatos = process.pkg
+    ? path.dirname(process.execPath)
+    : path.join(__dirname, '..');
+const archivoUsuarios = path.join(carpetaDatos, 'usuarios.json');
 
 // Lee los usuarios guardados. Si el archivo aún no existe, empieza con una lista vacía.
 function leerUsuarios() {
